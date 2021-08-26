@@ -73,11 +73,13 @@ public class ItemActions {
     }
 
     public void leaveBoat(GameMap map, Player player) {
+        Item boat = null;
         for (Item item : player.getInventory().keySet()) {
             if (item.getItemType().equals(ItemType.BOAT)) {
-                player.removeFromInventory(item);
+                boat = item;
             }
         }
+        player.removeFromInventory(boat);
         Cell playerCell = player.getCell();
         playerCell.setType(CellType.WATER);
         new Boat("Boat", playerCell, ItemType.BOAT);
