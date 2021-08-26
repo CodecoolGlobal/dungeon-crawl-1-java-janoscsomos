@@ -1,6 +1,5 @@
 package com.codecool.dungeoncrawl.logic.actors;
 
-import com.codecool.dungeoncrawl.logic.items.Boat;
 import com.codecool.dungeoncrawl.logic.map.Cell;
 import com.codecool.dungeoncrawl.logic.items.Item;
 import com.codecool.dungeoncrawl.logic.items.ItemType;
@@ -9,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Player extends Actor {
-    private boolean hasShip = false;
     private final Map<Item, Integer> inventory = new HashMap<>();
 
     public Player(Cell cell) {

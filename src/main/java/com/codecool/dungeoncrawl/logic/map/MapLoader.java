@@ -10,8 +10,8 @@ import java.util.Scanner;
 public class MapLoader {
 
     public static int[] getPlayerPosition(String map) {
-        InputStream is = MapLoader.class.getResourceAsStream(map);
-        Scanner scanner = new Scanner(is);
+        InputStream inputStream = MapLoader.class.getResourceAsStream(map);
+        Scanner scanner = new Scanner(inputStream);
 
         scanner.nextLine(); // empty line
         int[] result = new int[3];
@@ -36,8 +36,8 @@ public class MapLoader {
     }
 
     public static GameMap loadMap(int height, String mapToLoad, GameMap previousMap) {
-        InputStream is = MapLoader.class.getResourceAsStream(mapToLoad);
-        Scanner scanner = new Scanner(is);
+        InputStream inputStream = MapLoader.class.getResourceAsStream(mapToLoad);
+        Scanner scanner = new Scanner(inputStream);
 
         String line = scanner.nextLine(); // empty line
         int width = line.length();
@@ -46,7 +46,6 @@ public class MapLoader {
         int y = -1;
         while (true) {
             y++;
-            line = "";
             try {
                 line = scanner.nextLine();
             } catch (NoSuchElementException e) {

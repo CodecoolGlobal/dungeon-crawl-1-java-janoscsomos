@@ -26,10 +26,7 @@ import java.util.Map;
 
 public class Game extends Application {
 
-    int mapCounter = 1;
-
     Scene scene;
-
     GameMap map;
     Canvas canvas = new Canvas(
             NumberParameters.TILE_WIDTH_MULTIPLIER_V.getValue() * Tiles.TILE_WIDTH,
@@ -41,6 +38,7 @@ public class Game extends Application {
     Util util = new Util();
     gameConditions gameConditions = new gameConditions();
     boolean confirmQuit = false;
+    int mapCounter = 1;
 
     Label healthLabel = new Label();
     Label inventoryLabel = new Label();

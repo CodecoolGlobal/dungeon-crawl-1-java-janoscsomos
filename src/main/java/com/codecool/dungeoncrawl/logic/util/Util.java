@@ -2,8 +2,6 @@ package com.codecool.dungeoncrawl.logic.util;
 
 import com.codecool.dungeoncrawl.logic.actors.Actor;
 
-import java.util.concurrent.TimeUnit;
-
 public class Util {
 
     public static void waitOneSec() {

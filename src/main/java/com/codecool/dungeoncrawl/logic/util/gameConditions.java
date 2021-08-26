@@ -1,12 +1,8 @@
 package com.codecool.dungeoncrawl.logic.util;
 
-import com.codecool.dungeoncrawl.logic.items.Item;
-import com.codecool.dungeoncrawl.logic.items.ItemType;
 import com.codecool.dungeoncrawl.logic.map.Cell;
 import com.codecool.dungeoncrawl.logic.map.CellType;
 import com.codecool.dungeoncrawl.logic.map.GameMap;
-
-import java.util.Map;
 
 public class gameConditions {
 
@@ -33,9 +29,7 @@ public class gameConditions {
     }
 
     public boolean checkNextCellPlayer(Cell nextCell, boolean boatChecker) {
-        if(boatChecker) {
-            return nextCell.getType().equals(CellType.WATER);
-        }
+        if(boatChecker) return nextCell.getType().equals(CellType.WATER);
         return (nextCell.getType().equals(CellType.FLOOR) ||
                 nextCell.getType().equals(CellType.FLOOR2) ||
                 nextCell.getType().equals(CellType.RAMP_START) ||

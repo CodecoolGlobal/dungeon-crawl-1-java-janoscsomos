@@ -6,5 +6,5 @@ public enum ItemType {
     ARMOR,
     FOOD,
     POTION,
-    BOAT;
+    BOAT
 }

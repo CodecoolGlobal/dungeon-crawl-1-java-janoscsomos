@@ -15,7 +15,6 @@ public enum CellType {
     RAMP_START("ramp start"),
     RAMP_MIDDLE("ramp middle"),
     RAMP_END("ramp end"),
-    BOAT("boat"),
     TORCH("torch"),
     LADDER("ladder"),
     LADDER_UPPER("ladder upper"),

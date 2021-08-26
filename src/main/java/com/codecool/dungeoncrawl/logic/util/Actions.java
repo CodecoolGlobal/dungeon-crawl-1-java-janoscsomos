@@ -142,7 +142,13 @@ public class Actions {
             die();
     }
 
-    private boolean playerTurn(Cell nearbyCell, Actor player, Label actionLabel, Actor enemy, int playerHealth) {
+    private boolean playerTurn(
+            Cell nearbyCell,
+            Actor player,
+            Label actionLabel,
+            Actor enemy,
+            int playerHealth
+    ) {
         int enemyHealth = hit(actionLabel, player, enemy, StringFactory.HIT_ENEMY.message);
         if (gameConditions.isDead(enemyHealth)) {
             killEnemy(nearbyCell, player, actionLabel, playerHealth, enemy);
@@ -165,7 +171,13 @@ public class Actions {
     }
 
     // If enemy's health 0 or less:
-    private void killEnemy(Cell nearbyCell, Actor player, Label actionLabel, int playerHealth, Actor enemy) {
+    private void killEnemy(
+            Cell nearbyCell,
+            Actor player,
+            Label actionLabel,
+            int playerHealth,
+            Actor enemy
+    ) {
         nearbyCell.setActor(null);
         actionLabel.setText(actionLabel.getText() + StringFactory.KILL_ENEMY.message);
         player.setHealth(playerHealth);
