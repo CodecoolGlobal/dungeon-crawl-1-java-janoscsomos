@@ -1,8 +1,6 @@
 package com.codecool.dungeoncrawl;
 
-import com.codecool.dungeoncrawl.logic.items.Boat;
 import com.codecool.dungeoncrawl.logic.items.ItemActions;
-import com.codecool.dungeoncrawl.logic.items.ItemType;
 import com.codecool.dungeoncrawl.logic.map.*;
 import com.codecool.dungeoncrawl.logic.util.*;
 import com.codecool.dungeoncrawl.logic.map.Cell;
@@ -58,7 +56,7 @@ public class Game extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         GridPane ui = new GridPane();
         setUpUi(ui);
 
@@ -66,7 +64,7 @@ public class Game extends Application {
         setUpBorderPane(ui, borderPane);
 
         scene = new Scene(borderPane);
-        setUpScene(primaryStage, scene, "/map2.txt", null);
+        setUpScene(primaryStage, scene, "/map1.txt", null);
     }
 
     private void setUpBorderPane(GridPane ui, BorderPane borderPane) {
@@ -164,9 +162,7 @@ public class Game extends Application {
                 itemActions.consumePotion(map, StringFactory.POTION.message);
                 break;
             case B:
-                if (map.getPlayer().hasItem(ItemType.BOAT)) {
-                    itemActions.leaveBoat(map, map.getPlayer());
-                }
+                itemActions.boatActions(map);
                 break;
         }
     }
