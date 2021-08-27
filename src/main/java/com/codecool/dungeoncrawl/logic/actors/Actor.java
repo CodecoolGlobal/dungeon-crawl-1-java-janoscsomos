@@ -2,6 +2,7 @@ package com.codecool.dungeoncrawl.logic.actors;
 
 import com.codecool.dungeoncrawl.logic.map.Cell;
 import com.codecool.dungeoncrawl.logic.map.Drawable;
+import com.codecool.dungeoncrawl.logic.util.Direction;
 import com.codecool.dungeoncrawl.logic.util.GameConditions;
 
 public abstract class Actor implements Drawable {
@@ -11,7 +12,7 @@ public abstract class Actor implements Drawable {
     private int attack = 3;
     private int defense = 0;
 
-    GameConditions gameConditions = new GameConditions();
+    protected GameConditions gameConditions = new GameConditions();
 
     public Actor(Cell cell) {
         this.cell = cell;
@@ -58,7 +59,7 @@ public abstract class Actor implements Drawable {
         this.defense = defense;
     }
 
-    public abstract void monsterMove(Cell playerCell);
+
 
     public void move(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
@@ -68,4 +69,6 @@ public abstract class Actor implements Drawable {
             cell = nextCell;
         }
     }
+
+
 }

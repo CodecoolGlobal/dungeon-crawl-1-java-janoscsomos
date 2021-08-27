@@ -1,5 +1,6 @@
-package com.codecool.dungeoncrawl.logic.actors;
+package com.codecool.dungeoncrawl.logic.actors.monster;
 
+import com.codecool.dungeoncrawl.logic.actors.Actor;
 import com.codecool.dungeoncrawl.logic.map.Cell;
 import com.codecool.dungeoncrawl.logic.map.CellType;
 import com.codecool.dungeoncrawl.logic.map.GameMap;
@@ -7,7 +8,7 @@ import com.codecool.dungeoncrawl.logic.util.Util;
 
 import java.util.ArrayList;
 
-public class Kraken extends Actor{
+public class Kraken extends Monster {
     private final GameMap map;
     ArrayList<Cell> waterCells = new ArrayList<>();
     public Kraken(Cell cell, GameMap map) {

@@ -1,9 +1,13 @@
 package com.codecool.dungeoncrawl.logic.map;
 
 import com.codecool.dungeoncrawl.logic.actors.*;
+import com.codecool.dungeoncrawl.logic.actors.monster.*;
+import com.codecool.dungeoncrawl.logic.util.Direction;
 import com.codecool.dungeoncrawl.logic.util.GameConditions;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class GameMap {
 
@@ -11,11 +15,12 @@ public class GameMap {
     private final int height;
     public GameConditions gameConditions;
     private final Cell[][] cells;
-    private final ArrayList<Actor> skeletons = new ArrayList<>();
-    private final ArrayList<Actor> orcs = new ArrayList<>();
-    private final ArrayList<Actor> undeads = new ArrayList<>();
-    private final ArrayList<Actor> krakens = new ArrayList<>();
-    private final ArrayList<Actor> ghosts = new ArrayList<>();
+    private final List<Monster> monsters = new LinkedList<>();
+    private final List<Actor> skeletons = new LinkedList<>();
+    private final List<Actor> orcs = new ArrayList<>();
+    private final List<Actor> undeads = new ArrayList<>();
+    private final List<Actor> krakens = new ArrayList<>();
+    private final List<Actor> ghosts = new ArrayList<>();
     private Player player;
     private CellType exit;
 
@@ -27,11 +32,11 @@ public class GameMap {
         cells = defineCells(width, height, defaultCellType);
     }
 
-    public ArrayList<Actor> getKraken() {
+    public List<Actor> getKraken() {
         return krakens;
     }
 
-    public ArrayList<Actor> getGhosts() {
+    public List<Actor> getGhosts() {
         return ghosts;
     }
 
@@ -47,15 +52,15 @@ public class GameMap {
         return height;
     }
 
-    public ArrayList<Actor> getSkeletons() {
+    public List<Actor> getSkeletons() {
         return skeletons;
     }
 
-    public ArrayList<Actor> getOrcs() {
+    public List<Actor> getOrcs() {
         return orcs;
     }
 
-    public ArrayList<Actor> getUndeads() {
+    public List<Actor> getUndeads() {
         return undeads;
     }
 
@@ -76,35 +81,27 @@ public class GameMap {
     }
 
     public void addKraken(Kraken kraken) {
-        this.krakens.add(kraken);
+        this.monsters.add(kraken);
     }
 
     public void addGhost(Ghost ghost) {
-        this.ghosts.add(ghost);
+        this.monsters.add(ghost);
     }
 
     public void addSkeleton(Skeleton skeleton) {
-        this.skeletons.add(skeleton);
+        this.monsters.add(skeleton);
     }
 
     public void addOrc(Orc orc) {
-        this.orcs.add(orc);
+        this.monsters.add(orc);
     }
 
     public void addUndead(Undead undead) {
-        this.undeads.add(undead);
+        this.monsters.add(undead);
     }
 
-    public void removeSkeleton(int index) {
-        this.skeletons.remove(index);
-    }
-
-    public void removeOrc(int index) {
-        this.orcs.remove(index);
-    }
-
-    public void removeUndead(int index) {
-        this.undeads.remove(index);
+    public void removeMonster(Monster monster) {
+        this.monsters.remove(monster);
     }
 
     private Cell[][] defineCells(int width, int height, CellType defaultCellType) {
@@ -126,5 +123,19 @@ public class GameMap {
                     cell.setType(CellType.OPEN_DOOR);
             }
         }
+    }
+
+    private void monsterInteractions() {
+        for (var monster :monsters) {
+            if (gameConditions.isDead(monster.getHealth()))
+                this.removeMonster(monster);
+            else
+                monster.monsterMove(this.getCell(direction.getX(), direction.getY()));
+        }
+    }
+
+    public void moveAcotrs(Direction direction) {
+        player.move(Direction.NORTH.getX(), Direction.NORTH.getY());
+        monsterInteractions();
     }
 }

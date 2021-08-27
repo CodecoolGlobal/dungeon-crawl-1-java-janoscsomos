@@ -123,9 +123,8 @@ public class Game extends Application {
         ItemActions itemActions = new ItemActions();
         switch (keyEvent.getCode()) {
             case UP:
-                actions.movePlayer(Direction.NORTH.getX(), Direction.NORTH.getY(), map, actionLabel);
-                actions.monsterInteractions(map);
-                actions.moveMonsters(map.getGhosts(), map.getPlayer().getCell());
+                map.moveAcotrs(Direction.NORTH);
+
                 enterTheDoor();
                 refresh(map.getPlayer().getX(), map.getPlayer().getY());
                 break;
@@ -192,12 +191,12 @@ public class Game extends Application {
         }
     }
 
-    private void refresh(int playerX, int playerY) {
+    private void refresh(int x, int y) {
         context.setFill(Color.BLACK);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         int diffX = (int) (canvas.getWidth() / (NumberParameters.TILE_WIDTH_MULTIPLIER.getValue() * Tiles.TILE_WIDTH));
         int diffY = (int) (canvas.getHeight() / (NumberParameters.TILE_WIDTH_MULTIPLIER.getValue() * Tiles.TILE_WIDTH));
-        drawingCells(playerX, playerY, diffX, diffY);
+        drawingCells(x, y, diffX, diffY);
         refreshUi();
     }
 

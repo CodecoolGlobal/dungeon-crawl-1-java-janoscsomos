@@ -1,8 +1,9 @@
-package com.codecool.dungeoncrawl.logic.actors;
+package com.codecool.dungeoncrawl.logic.actors.monster;
 
+import com.codecool.dungeoncrawl.logic.actors.Actor;
 import com.codecool.dungeoncrawl.logic.map.Cell;
 
-public class Undead extends Actor{
+public class Undead extends Monster {
 
     public Undead(Cell cell) {
         super(cell);

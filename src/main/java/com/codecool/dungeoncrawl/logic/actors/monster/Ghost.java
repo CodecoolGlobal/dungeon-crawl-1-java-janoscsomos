@@ -1,9 +1,10 @@
-package com.codecool.dungeoncrawl.logic.actors;
+package com.codecool.dungeoncrawl.logic.actors.monster;
 
+import com.codecool.dungeoncrawl.logic.actors.Actor;
 import com.codecool.dungeoncrawl.logic.map.Cell;
 import com.codecool.dungeoncrawl.logic.util.Direction;
 
-public class Ghost extends Actor{
+public class Ghost extends Monster {
 
     public Ghost(Cell cell) {
         super(cell);

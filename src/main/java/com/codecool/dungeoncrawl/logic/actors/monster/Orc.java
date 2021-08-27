@@ -1,9 +1,10 @@
-package com.codecool.dungeoncrawl.logic.actors;
+package com.codecool.dungeoncrawl.logic.actors.monster;
 
+import com.codecool.dungeoncrawl.logic.actors.Actor;
 import com.codecool.dungeoncrawl.logic.map.Cell;
 import com.codecool.dungeoncrawl.logic.util.Direction;
 
-public class Orc extends Actor{
+public class Orc extends Monster {
 
     Direction direction = Direction.NORTH;
 
